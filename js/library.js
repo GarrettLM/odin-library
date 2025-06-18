@@ -42,6 +42,14 @@ function removeBookByID(id) {
   myLibrary.splice(index, index);
 }
 
+function setReadStatusOfBookByID(id, haveRead) {
+  let index = getIndexByBookID(id);
+  if (index === -1) {
+    return;
+  }
+  myLibrary[index].haveRead = haveRead;
+}
+
 function displayLibrary() {
   for(book of myLibrary) {
     console.log(book.info());
