@@ -20,3 +20,18 @@ Book.prototype.info = function () {
   }
 }
 
+function addBookToLibrary(title, author, pageCount) {
+  let book = new Book(title, author, pageCount);
+  myLibrary.push(book);
+}
+
+function displayLibrary() {
+  for(book of myLibrary) {
+    console.log(book.info());
+  }
+}
+
+addBookToLibrary("The Hobbit", "J.R.R. Toklkien", 295);
+addBookToLibrary("The Stand", "Stephen King", 1153);
+displayLibrary();
+
