@@ -12,6 +12,10 @@ function Book(title, author, pageCount, haveRead = false) {
   this.id = crypto.randomUUID();
 }
 
+Book.prototype.toggleHaveRead = function () {
+  this.haveRead = !this.haveRead;
+}
+
 Book.prototype.info = function () {
   if (this.haveRead) {
     return `${this.id}: ${this.title} by ${this.author}, ${this.pageCount} pages, have read`;
@@ -42,12 +46,12 @@ function removeBookByID(id) {
   myLibrary.splice(index, index);
 }
 
-function setReadStatusOfBookByID(id, haveRead) {
+function toggleHaveReadStatusOfBookByID(id) {
   let index = getIndexByBookID(id);
   if (index === -1) {
     return;
   }
-  myLibrary[index].haveRead = haveRead;
+  myLibrary[index].toggleHaveRead();
 }
 
 function displayLibrary() {
