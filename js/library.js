@@ -25,6 +25,23 @@ function addBookToLibrary(title, author, pageCount) {
   myLibrary.push(book);
 }
 
+function getIndexByBookID(id) {
+  for (i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].id === id) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function removeBookByID(id) {
+  let index = getIndexByBookID(id);
+  if (index === -1) {
+    return;
+  }
+  myLibrary.splice(index, index);
+}
+
 function displayLibrary() {
   for(book of myLibrary) {
     console.log(book.info());
@@ -33,5 +50,6 @@ function displayLibrary() {
 
 addBookToLibrary("The Hobbit", "J.R.R. Toklkien", 295);
 addBookToLibrary("The Stand", "Stephen King", 1153);
+addBookToLibrary("Inside the Technical Consulting Business", "Harvey Kaye", 237);
 displayLibrary();
 
